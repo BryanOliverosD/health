@@ -1,13 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-
-db = None
-
+from flask_marshmallow import Marshmallow
 
 def init_db(app):
     global db
+    global ma
 
     db = SQLAlchemy(app)
-    Migrate(app, db)
+    ma = Marshmallow(app)
 
-    return db
+    return db, ma
