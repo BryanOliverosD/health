@@ -9,8 +9,8 @@ from flask_jwt_extended import jwt_required
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:testing@172.17.0.4:3306/health'
-app.config['JWT_SECRET_KEY'] = '23people'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['JWT_SECRET_KEY'] = os.environ['JWT_SECRET']
 jwt = JWTManager(app)
 init_db(app)
 
