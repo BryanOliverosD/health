@@ -15,7 +15,7 @@ COPY . /app
 
 ENV APP_SETTINGS 'config.DevelopmentConfig'
 ENV DATABASE_URL "mysql+mysqlconnector://root:testing@172.17.0.4:3306/health"
-EXPOSE 5000
+ENV PORT 5000
 
 # command to run on container start
-#CMD [ "python", "./app.py" ]
+CMD [ "python", "./app.py" ]

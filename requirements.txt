@@ -8,3 +8,4 @@ flask-marshmallow==0.13.0
 pymysql==0.10.0
 mysql-connector-python==8.0.21
 flask-restful
+flask_jwt_extended
