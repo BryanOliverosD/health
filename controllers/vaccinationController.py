@@ -90,7 +90,6 @@ class vaccinationController(Resource):
                 return jsonify(success=True, message='vaccination not found'), 404
             db.session.delete(vaccination)
             db.session.commit()
-            response = vaccination_schema.dump(vaccination)
             return jsonify(success=True, message='resource deleted successfully'), 200
         except(Exception) as e: 
             print(e)
