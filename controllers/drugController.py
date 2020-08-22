@@ -29,6 +29,9 @@ class drugController(Resource):
             return jsonify(success=False, errors='internal error'), 500
     def post():
         try:
+            if not request.headers.get('Content-Type') or not request.headers['Content-Type'] == 'application/json':
+                return jsonify(success=True, message='header not valid'), 400
+
             code = request.json['code']
             if validations.validateSize(code, 10):
                 return jsonify(success=True, message='code exceeded the maximum size'), 400
@@ -52,6 +55,9 @@ class drugController(Resource):
             return jsonify(success=False, errors='internal error'), 500
     def put(id):
         try:
+            if not request.headers.get('Content-Type') or not request.headers['Content-Type'] == 'application/json':
+                return jsonify(success=True, message='header not valid'), 400
+
             drug = Drug.query.get(id)
             if drug is None:
                 return jsonify(success=True, message='drug not found'), 404

@@ -30,6 +30,9 @@ class vaccinationController(Resource):
             return jsonify(success=False, errors='internal error'), 500
     def post():
         try:
+            if not request.headers.get('Content-Type') or not request.headers['Content-Type'] == 'application/json':
+                return jsonify(success=True, message='header not valid'), 400
+
             rut = request.json['rut']
             # validate rut
             if not validations.validateRut(rut):
@@ -60,6 +63,9 @@ class vaccinationController(Resource):
             return jsonify(success=False, errors='internal error'), 500
     def put(id):
         try:
+            if not request.headers.get('Content-Type') or not request.headers['Content-Type'] == 'application/json':
+                return jsonify(success=True, message='header not valid'), 400
+                
             vaccination = Vaccination.query.get(id)
             if vaccination is None:
                 return jsonify(success=True, message='vaccination not found'), 404
