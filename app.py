@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-app.config['JWT_SECRET_KEY'] = os.environ['JWT_SECRET']
+app.config['JWT_SECRET_KEY'] = os.environ['SECRET']
 jwt = JWTManager(app)
 init_db(app)
 
