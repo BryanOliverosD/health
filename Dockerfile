@@ -13,10 +13,10 @@ RUN pip install -r requirements.txt
 # copy the content of the local src directory to the working directory
 COPY . /app
 
-ENV APP_SETTINGS 'config.ProductionConfig'
-ENV DATABASE_URL "mysql+mysqlconnector://root:testing@172.17.0.4:3306/health"
-ENV PORT 5000
-ENV SECRET '23people'
+# ENV APP_SETTINGS 'config.ProductionConfig'
+# ENV DATABASE_URL "mysql+mysqlconnector://root:testing@35.198.24.5:3306/health"
+# ENV PORT 5000
+# ENV SECRET '23people'
 
 # command to run on container start
 CMD [ "python", "./app.py" ]

@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from database import init_db
 import os
 from flask_jwt_extended import JWTManager
@@ -22,12 +22,15 @@ from helpers import token
 
 ### get token ####
 
+@app.route('/', methods=['GET'])
+def dummy():
+    return jsonify(stauts=True, result='service running')
+
 @app.route('/token', methods=['GET'])
 def get_token():
 
     response = token.generate_token()
     return response
-
 
 ### drugs crud ###
 
